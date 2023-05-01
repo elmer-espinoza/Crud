@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Crud.Models.Vendedor>
+
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Inicio</h2>
+
+<!--
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+-->
+    <a class="btn btn-success" href="@Url.Action("Crear", "Vendedor")">Crear Nuevo</a>
+
+
+<table class="table">
+    <tr>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.Vendedor_Id)-->
+            Id
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellidos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Correo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vendedor_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Correo)
+        </td>
+        <td>
+
+    <!--
+    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    -->
+            <a class="btn btn-primary" href="@Url.Action("Editar", "Vendedor", new { vendedor_id = item.Vendedor_Id})">Editar</a>
+            <a class="btn btn-danger" href="@Url.Action("Remover", "Vendedor", new { vendedor_id = item.Vendedor_Id})">Eliminar</a>
+
+        </td>
+    </tr>
+}
+
+</table>
